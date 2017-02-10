@@ -9,8 +9,8 @@
 // @exclude         *://www.youtube.com/live_chat*
 // @icon            http://zetatec27.blogspot.com.br/favicon.ico
 // @encoding utf-8
-// @updateURL https://cdn.rawgit.com/Zetat/random/master/Youtube-Download-(TamperMonkey).js
-// @downloadURL https://cdn.rawgit.com/Zetat/random/master/Youtube-Download-(TamperMonkey).js
+// @updateURL https://cdn.rawgit.com/Zetat/random/master/Youtube-Download-(TamperMonkey).user.js
+// @downloadURL https://cdn.rawgit.com/Zetat/random/master/Youtube-Download-(TamperMonkey).user.js
 // ==/UserScript==
 (function() {
 
