@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Youtube Download
-// @version      1.1
+// @version      2.0
 // @description  Baixar áudio e vídeo do youtube
 // @author       Zeta Tec
 // @match        *://www.youtube.com/*
