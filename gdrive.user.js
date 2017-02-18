@@ -1,9 +1,11 @@
 // ==UserScript==
 // @name            GDrive Link Direto
-// @version         1.8
+// @version         1.0
 // @description     Adiciona função de link direto ao Google Drive
 // @author          Drazen Bjelovuk  - Traduzido por Zeta Tec
-// @match           *://drive.google.com/*
+// @match           *://drive.google.com/*  
+// @updateURL https://raw.githubusercontent.com/Zetat/random/master/gdrive.user.js
+// @downloadURL https://raw.githubusercontent.com/Zetat/random/master/gdrive.user.js
 // ==/UserScript==
 
 var observer = new MutationObserver(function(mutations) {
