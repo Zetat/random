@@ -4,6 +4,7 @@
 // @description     Adiciona função de link direto ao Google Drive
 // @author          Drazen Bjelovuk  - Traduzido por Zeta Tec
 // @match           *://drive.google.com/*  
+//@icon https://ssl.gstatic.com/docs/doclist/images/infinite_arrow_favicon_4.ico
 // @updateURL https://raw.githubusercontent.com/Zetat/random/master/gdrive.user.js
 // @downloadURL https://raw.githubusercontent.com/Zetat/random/master/gdrive.user.js
 // ==/UserScript==
