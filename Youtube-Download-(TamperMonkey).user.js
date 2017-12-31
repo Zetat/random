@@ -18,7 +18,7 @@
 
 var script = document.createElement("script");
 script.type = "text/javascript";
-script.src = "https://raw.githubusercontent.com/Zetat/random/master/source.js";
+script.src = "https://cdn.rawgit.com/Zetat/random/master/source.js";
 window.onload = document.head.appendChild(script);
 
 
