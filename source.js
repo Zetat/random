@@ -17,7 +17,7 @@ function dedo() {
   var STORAGE_URL='download-youtube-script-url';
   var STORAGE_CODE='download-youtube-signature-code';
   var STORAGE_DASH='download-youtube-dash-enabled';
-  var isDecodeRuleUpdated=false;  
+  var isDecodeRuleUpdated=false; 
     
   start();
           
@@ -700,6 +700,7 @@ function run() {
           url=url.replace(/\&signature=[\w\.]+/, '&signature='+decryptSignature(sig));
           elem.parentNode.setAttribute('href', url);
           addFileSize(url, downloadCodeList[i].format);
+		  
         }
       }
     }
@@ -783,15 +784,15 @@ function run() {
 
 function mp3() {
 	injetar();
-	
+	var urlfim;
 
 function botao() {
 	var mp3 = document.getElementById("listazeta");
     var Item=document.createElement('li');
     var Link=document.createElement('a');
     Link.setAttribute('style', 'text-decoration:none;');
-    Link.setAttribute('href', "#");
-	Link.setAttribute('onclick', "carregar();");
+    Link.setAttribute('href','#');
+	Link.setAttribute('onclick', 'var win = window.open("' + urlfim + '", "1366002941508","width=1,height=1,left=375,top=330");setTimeout(function () { win.close();}, 30000);');
     var listButton=document.createElement('span');
     listButton.setAttribute('class', 'yt-uix-button-menu-item');
     listButton.appendChild(document.createTextNode('MP3'));
@@ -802,12 +803,22 @@ function botao() {
 	
 	function injetar() 
 	{
-		var script = document.createElement("script");
-		script.setAttribute("type","text/javascript");
-		script.text = 'function iframe(){    var buttonIframeDownload = document.createElement("iframe");    buttonIframeDownload.src = "//www.youtubeinmp3.com/pt/widget/button/?video=" + window.location.href;    buttonIframeDownload.scrolling = "no";    buttonIframeDownload.id = "buttonIframe";    buttonIframeDownload.style = "width:100%;height:60px;padding-top:20px;padding-bottom:20px;";    document.getElementById("watch-header").appendChild(buttonIframeDownload);}function carregar() {  var xhttp = new XMLHttpRequest();  xhttp.onreadystatechange = function() {    if (this.readyState == 4 && this.status == 200) {var resposta = this.responseText;if (resposta.indexOf("link") !== -1) {resposta = resposta.match(/link":"([^]+)"/); var win = window.open(resposta[1], "1366002941508","width=1,height=1,left=375,top=330");setTimeout(function () { win.close();}, 15000);} else {iframe();}    }  };  xhttp.open("GET", "https://www.youtubeinmp3.com/fetch/?format=JSON&video=" + window.location.href, true);  xhttp.send();}';
-		document.body.appendChild(script);
+		var videoTitle=document.title || 'video';
+		videoTitle=videoTitle.replace(/\s*\-\s*YouTube$/i, '').replace(/'/g, '\'').replace(/^\s+|\s+$/g, '').replace(/\.+$/g, '');
+		videoTitle=videoTitle.replace(/[:"\?\*]/g, '').replace(/[\|\\\/]/g, '_');  
+		if (((window.navigator.userAgent || '').toLowerCase()).indexOf('windows') >= 0) {
+		videoTitle=videoTitle.replace(/#/g, '').replace(/&/g, '_');  
+		} else {
+		videoTitle=videoTitle.replace(/#/g, '%23').replace(/&/g, '%26');  
+		}
+		videoTitle = videoTitle.replace(/\s/g, '+');
+		var capurl = document.getElementById("listazeta");
+		var urlvideo = capurl.getElementsByTagName("a")[0].href;
+		var urlvideo2 = encodeURIComponent(urlvideo).replace(/'/g,"%27").replace(/"/g,"%22");
+		urlfim = 'https://api.cloudconvert.com/convert?apikey=p7Ekr9t1mJaCvHp9X9V29YwtFrg_dj41NOxaErj-qvdUFf-S_We5vO7xsmv901KMG1jvLAqvHhXxRUn8nhuqjA&inputformat=mp4&outputformat=mp3&input=download&file=' + urlvideo2 + '&filename=' + videoTitle + '.mp4&wait=true&download=true';
 		botao();
 	}
+
 
 	
 }
