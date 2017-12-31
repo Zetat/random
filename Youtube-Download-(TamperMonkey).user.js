@@ -2,7 +2,6 @@
 // @name         Youtube Download
 // @version      1.2
 // @description  Baixar áudio e vídeo do youtube
-// @namespace    https://raw.githubusercontent.com/Zetat/random/master/Youtube-Download-(TamperMonkey).user.js
 // @author       Zeta Tec
 // @homepageURL https://www.youtube.com/c/zetatec
 // @match        *://www.youtube.com/*
