@@ -1,3 +1,4 @@
+
 dedo();
 function dedo() {
 	(function () {
@@ -784,7 +785,7 @@ function run() {
 
 function mp3() {
 	injetar();
-	var urlfim;
+
 
 function botao() {
 	var mp3 = document.getElementById("listazeta");
@@ -792,7 +793,7 @@ function botao() {
     var Link=document.createElement('a');
     Link.setAttribute('style', 'text-decoration:none;');
     Link.setAttribute('href','#');
-	Link.setAttribute('onclick', 'var win = window.open("' + urlfim + '", "1366002941508","width=1,height=1,left=375,top=330");setTimeout(function () { win.close();}, 30000);');
+	Link.setAttribute('onclick', 'insere();');
     var listButton=document.createElement('span');
     listButton.setAttribute('class', 'yt-uix-button-menu-item');
     listButton.appendChild(document.createTextNode('MP3'));
@@ -803,21 +804,15 @@ function botao() {
 	
 	function injetar() 
 	{
-		var videoTitle=document.title || 'video';
-		videoTitle=videoTitle.replace(/\s*\-\s*YouTube$/i, '').replace(/'/g, '\'').replace(/^\s+|\s+$/g, '').replace(/\.+$/g, '');
-		videoTitle=videoTitle.replace(/[:"\?\*]/g, '').replace(/[\|\\\/]/g, '_');  
-		if (((window.navigator.userAgent || '').toLowerCase()).indexOf('windows') >= 0) {
-		videoTitle=videoTitle.replace(/#/g, '').replace(/&/g, '_');  
-		} else {
-		videoTitle=videoTitle.replace(/#/g, '%23').replace(/&/g, '%26');  
-		}
-		videoTitle = videoTitle.replace(/\s/g, '+');
-		var capurl = document.getElementById("listazeta");
-		var urlvideo = capurl.getElementsByTagName("a")[0].href;
-		var urlvideo2 = encodeURIComponent(urlvideo).replace(/'/g,"%27").replace(/"/g,"%22");
-		urlfim = 'https://api.cloudconvert.com/convert?apikey=p7Ekr9t1mJaCvHp9X9V29YwtFrg_dj41NOxaErj-qvdUFf-S_We5vO7xsmv901KMG1jvLAqvHhXxRUn8nhuqjA&inputformat=mp4&outputformat=mp3&input=download&file=' + urlvideo2 + '&filename=' + videoTitle + '.mp4&wait=true&download=true';
+
+		var script1 = document.createElement("script");
+		script1.src = 'https://sites.google.com/site/geradorzeta/hospedagem/injetar.js?attredirects=0&d=1'; 
+		document.body.appendChild(script1);
 		botao();
+		
+		
 	}
+
 
 
 	
