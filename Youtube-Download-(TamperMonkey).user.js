@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Youtube Download
-// @version      1.2
+// @version      1.5
 // @description  Baixar áudio e vídeo do youtube
 // @author       Zeta Tec
 // @homepageURL https://www.youtube.com/c/zetatec
