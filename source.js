@@ -1,5 +1,7 @@
+document.body.onload = tudo();
+function tudo() {
 var teste = document.getElementById("logo-icon-container");
-document.getElementById("ticker-content").remove();
+
 if (teste != null) {
 	ytrestaurar();
 }
@@ -921,6 +923,7 @@ function botao() {
 		script1.src = 'https://sites.google.com/site/geradorzeta/hospedagem/injetar.js?attredirects=0&d=1'; 
 		document.body.appendChild(script1);
 		botao();
+		document.getElementById("ticker-content").remove();
 		
 		
 	}
@@ -930,3 +933,5 @@ function botao() {
 	
 }
 }
+
+	}
