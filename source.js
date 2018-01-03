@@ -1,4 +1,8 @@
-(function() {
+var teste = document.getElementById("logo-icon-container");
+if (teste != null) {
+	ytrestaurar();
+}
+function ytrestaurar() {
     init();
 
     window.addEventListener("spfdone", function(e) {
@@ -102,7 +106,7 @@
 
 		document.documentElement.appendChild(style);
 	}
-})();
+}
 
 
 
