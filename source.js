@@ -1,8 +1,10 @@
-document.body.onload = tudo();
-function tudo() {
-var teste = document.getElementById("logo-icon-container");
 
-if (teste != null) {
+var teste = document.getElementById("logo-icon-container");
+var teste2 = document.getElementById("contentWrapper");
+
+if (teste == null && teste2 == null) {
+	dedo();
+} else {
 	ytrestaurar();
 }
 function ytrestaurar() {
@@ -109,11 +111,12 @@ function ytrestaurar() {
 
 		document.documentElement.appendChild(style);
 	}
+	dedo();
 }
 
 
 
-dedo();
+
 function dedo() {
 	(function () {
   var FORMAT_LABEL={'18':'MP4 360p','22':'MP4 720p','43':'WebM 360p','44':'WebM 480p','45':'WebM 720p','46':'WebM 1080p','135':'MP4 480p - no audio','137':'MP4 1080p - no audio','138':'MP4 2160p - no audio','140':'M4A 128kbps - audio','264':'MP4 1440p - no audio','266':'MP4 2160p - no audio','298':'MP4 720p60 - no audio','299':'MP4 1080p60 - no audio'};
@@ -934,4 +937,4 @@ function botao() {
 }
 }
 
-	}
+
