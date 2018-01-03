@@ -1,7 +1,5 @@
 var teste = document.getElementById("logo-icon-container");
-if (teste != null) {
-	ytrestaurar();
-}
+document.getElementById("ticker-content").remove();
 function ytrestaurar() {
     init();
 
