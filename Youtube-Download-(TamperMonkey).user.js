@@ -1498,19 +1498,17 @@ Download.prototype = {
 		return {os:os, scriptType:scriptType};
 	},
 	saveToDisk: function(url, name) {
-		console.log("Trying to download:", url);
-			this.fallbackSave(url);
+			this.fallbackSave(url, name);
 	},
 
 	// Saves using the old method
 	// NOTE: Does not work for audio or DASH formats
 	//       will download as "videoplayback"
 
-	fallbackSave: function(url) {
+	fallbackSave: function(url, name) {
 		var save = document.createElement('a');
 		save.target = "_blank";
 		save.download = name;
-		console.log(decodeURIComponent(url));
 		save.href = url;
 		(document.body || document.documentElement).appendChild(save);
 		save.onclick = function() {
