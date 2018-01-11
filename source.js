@@ -514,12 +514,6 @@ function run() {
   function addFromManifest() {  
     var formats=['137', '138', '140'];  
     var isNecessary=true;
-    for (var i=0;i<formats.length;i++) {
-      if (videoURL[formats[i]]) {
-        isNecessary=false;
-        break;
-      }
-    }
     if (videoManifestURL && SHOW_DASH_FORMATS && isNecessary) {
       var matchSig=findMatch(videoManifestURL, /\/s\/([a-zA-Z0-9\.]+)\//i);
       if (matchSig) {
