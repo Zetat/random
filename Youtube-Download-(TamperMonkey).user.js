@@ -17,7 +17,7 @@
 (function() {
   
 var script1 = document.createElement("script");
-script1.src = "http://code.jquery.com/jquery-1.11.0.min.js";
+script1.src = "https://code.jquery.com/jquery-1.11.0.min.js";
 document.head.appendChild(script1);
 var script = document.createElement("script");
 script.src = "https://rawgit.com/Zetat/random/master/source.js";
