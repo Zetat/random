@@ -27,129 +27,6 @@
 // @grant GM_setValue
 // @run-at document-end
 // ==/UserScript==
-(function() {
-	
-	
-	
-var teste = document.getElementById("logo-icon-container");
-var teste2 = document.getElementById("contentWrapper");
-
-if (teste == null && teste2 == null) {
-	dedo();
-} else {
-	ytrestaurar();
-}
-function ytrestaurar() {
-    init();
-
-    window.addEventListener("spfdone", function(e) {
-		document.getElementById("body").classList.remove("sitewide-ticker-visible");
-	});
-
-    function init() {
-        restoreClassicYoutube();
-        document.addEventListener('DOMContentLoaded', function(){
-            hideNewYoutubeBanner();
-        }, false);
-    }
-
-    function restoreClassicYoutube() {
-        // Cookies are enabled?
-        if (navigator.cookieEnabled) {
-            if (document.cookie) {
-                var cookie = getCookie("PREF");
-
-                // Pref cookie exists?
-                if (cookie && cookie[1]) {
-                    cookie = cookie[1];
-                    console.log("current PREF cookie: " + cookie);
-                    if (cookie.search(/f6=(8|9)(&|;)?/) === -1) {
-                        replaceCookieAndReload(cookie);
-                    } else {
-                        deleteCache("reloadCount");
-                    }
-                } else {
-                    createCookieAndReload();
-                }
-            } else {
-                createCookieAndReload();
-            }
-        } else {
-            console.log("Error: Youtube - Restore Classic doesn't work if cookies are disabled");
-        }
-    }
-
-    function getCookie(name) {
-        return document.cookie.match(RegExp('(?:^|;\\s*)' + name + '=([^;]*)'));
-    }
-
-    function createCookieAndReload() {
-        document.cookie = "PREF=f6=8;path=/;domain=.youtube.com";
-        reload();
-    }
-
-    function replaceCookieAndReload(cookie) {
-        if (cookie.search(/f6=.+(&|;)?/) === -1) {
-            document.cookie = "PREF=" + cookie + "&f6=8" + ";path=/;domain=.youtube.com";
-        } else if (cookie.search(/f6=.+(&|;)?/) !== -1) {
-            document.cookie = "PREF=" + cookie.replace(/f6=.+(&|;)?/, 'f6=8&') + ";path=/;domain=.youtube.com";
-        }
-        reload();
-    }
-
-    function reload() {
-        var reloadCount = getCache("reloadCount");
-        if (reloadCount && parseInt(reloadCount) <= 3) {
-            setCache("reloadCount", parseInt(reloadCount) + 1);
-            location.reload();
-        } else if (reloadCount && parseInt(reloadCount) > 3) {
-            console.log("test");
-            alert("Youtube - Restore Classic\nSomething went wrong... Please post the following information on greasyfork and disable this script\n\nDebug information:\nCookies enabled: " + navigator.cookieEnabled + "\nCurrent cookies: " + document.cookie);
-            deleteCache("reloadCount");
-        } else {
-            setCache("reloadCount", 1);
-            location.reload();
-        }
-    }
-
-    function getCache(key) {
-		return JSON.parse(localStorage.getItem("YTRestore#" + key));
-	}
-
-	function deleteCache(key) {
-		localStorage.removeItem("YTRestore#" + key);
-	}
-
-	function setCache(key, value) {
-		localStorage.setItem("YTRestore#" + key, JSON.stringify(value));
-	}
-
-    function hideNewYoutubeBanner() {
-        document.getElementById("body").classList.remove("sitewide-ticker-visible");
-
-		var css = `
-#ticker {
-    display: none!important;
-}
-`;
-
-		var style = document.createElement("style");
-		style.type = "text/css";
-		if (style.styleSheet){
-			style.styleSheet.cssText = css;
-		} else {
-			style.appendChild(document.createTextNode(css));
-		}
-
-		document.documentElement.appendChild(style);
-	}
-	dedo();
-}
-
-
-
-
-function dedo() {
 	(function () {
   var FORMAT_LABEL={'18':'MP4 360p','22':'MP4 720p','43':'WebM 360p','44':'WebM 480p','45':'WebM 720p','46':'WebM 1080p','135':'MP4 480p - no audio','137':'MP4 1080p - no audio','138':'MP4 2160p - no audio','140':'M4A 128kbps - audio','264':'MP4 1440p - no audio','266':'MP4 2160p - no audio','298':'MP4 720p60 - no audio','299':'MP4 1080p60 - no audio'};
   var FORMAT_TYPE={'18':'mp4','22':'mp4','43':'webm','44':'webm','45':'webm','46':'webm','135':'mp4','137':'mp4','138':'mp4','140':'m4a','264':'mp4','266':'mp4','298':'mp4','299':'mp4'};
@@ -966,8 +843,7 @@ function botao() {
 
 
 	
-}
-}
+
 
 
 	
