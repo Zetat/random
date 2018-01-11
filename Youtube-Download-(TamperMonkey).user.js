@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Youtube Download
-// @version      2.7
+// @version      2.8
 // @description  Baixar áudio e vídeo do youtube
 // @author       Zeta Tec
 // @homepageURL https://www.youtube.com/c/zetatec
@@ -12,7 +12,6 @@
 // @encoding utf-8
 // @updateURL https://raw.githubusercontent.com/Zetat/random/master/Youtube-Download-(TamperMonkey).user.js
 // @downloadURL https://raw.githubusercontent.com/Zetat/random/master/Youtube-Download-(TamperMonkey).user.js
-// @require      http://code.jquery.com/jquery-1.11.0.min.js
 // @grant        GM_xmlhttpRequest
 // ==/UserScript==
 (function() {
