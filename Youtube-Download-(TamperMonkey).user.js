@@ -32,7 +32,7 @@ if (document.getElementById("ticker-content") !== null) {document.getElementById
 	temp = document.createElement("template");
 	temp.innerHTML = //
 		`<div id='ytd' style='border-radius:2px;color:#FFF;padding:10px;background-color:#09F;box-shadow:0 0 3px rgba(0,0,0,.5);font-size:12px;position:fixed;bottom:20px;right:50%;transform:translateX(50%);z-index:99999;'>
-		YouTube Download só funcionará na versão anterior do Youtube
+		YouTube Download só funcionará na versão anterior do Youtube<br>
 		<a href='#' onclick ='restaurar()' target='_blank' style='color:#FFF;font-weight:bold;'> Clique aqui para restaurar</a>
 		</div>`;
 	document.documentElement.appendChild(temp.content.firstChild);
