@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Youtube Download
-// @version      2.9
+// @version      3.0
 // @description  Baixar áudio e vídeo do youtube
 // @author       Zeta Tec
 // @homepageURL https://www.youtube.com/c/zetatec
@@ -14,127 +14,39 @@
 // @downloadURL https://raw.githubusercontent.com/Zetat/random/master/Youtube-Download-(TamperMonkey).user.js
 // @require      http://code.jquery.com/jquery-1.11.0.min.js
 // @grant        GM_xmlhttpRequest
+// @connect			googlevideo.com
+// @connect        youtube.com
+// @run-at document-idle
 // ==/UserScript==
 (function() {
 
+re();
+function re() {
+var sc = document.createElement("script");
+sc.src = "https://sites.google.com/site/geradorzeta/hospedagem/restaurar.js?attredirects=0&d=1";
+document.head.appendChild(sc);
+var temp;
+temp = document.querySelector("ytd-app, [src*='polymer']") || window.Polymer;
+if (document.getElementById("material-notice") !== null) {document.getElementById("material-notice").remove();}
+if (document.getElementById("ticker-content") !== null) {document.getElementById("ticker-content").remove();}
+	temp = document.createElement("template");
+	temp.innerHTML = //
+		`<div id='ytd' style='border-radius:2px;color:#FFF;padding:10px;background-color:#09F;box-shadow:0 0 3px rgba(0,0,0,.5);font-size:12px;position:fixed;bottom:20px;right:50%;transform:translateX(50%);z-index:99999;'>
+		YouTube Download só funcionará na versão anterior do Youtube
+		<a href='#' onclick ='restaurar()' target='_blank' style='color:#FFF;font-weight:bold;'> Clique aqui para restaurar</a>
+		</div>`;
+	document.documentElement.appendChild(temp.content.firstChild);
+	if (document.getElementById("yt-masthead-logo-fragment") === null) {
 
-var teste = document.getElementById("logo-icon-container");
-var teste2 = document.getElementById("contentWrapper");
+		return false;
+	}
+	else {
+		if (document.getElementById("ytd") !== null) {document.getElementById("ytd").remove();}
+		dedo();
+	}
 
-if (teste == null && teste2 == null) {
-	dedo();
-} else {
-	ytrestaurar();
+
 }
-function ytrestaurar() {
-    init();
-
-    window.addEventListener("spfdone", function(e) {
-		document.getElementById("body").classList.remove("sitewide-ticker-visible");
-	});
-
-    function init() {
-        restoreClassicYoutube();
-        document.addEventListener('DOMContentLoaded', function(){
-            hideNewYoutubeBanner();
-        }, false);
-    }
-
-    function restoreClassicYoutube() {
-        // Cookies are enabled?
-        if (navigator.cookieEnabled) {
-            if (document.cookie) {
-                var cookie = getCookie("PREF");
-
-                // Pref cookie exists?
-                if (cookie && cookie[1]) {
-                    cookie = cookie[1];
-                    console.log("current PREF cookie: " + cookie);
-                    if (cookie.search(/f6=(8|9)(&|;)?/) === -1) {
-                        replaceCookieAndReload(cookie);
-                    } else {
-                        deleteCache("reloadCount");
-                    }
-                } else {
-                    createCookieAndReload();
-                }
-            } else {
-                createCookieAndReload();
-            }
-        } else {
-            console.log("Error: Youtube - Restore Classic doesn't work if cookies are disabled");
-        }
-    }
-
-    function getCookie(name) {
-        return document.cookie.match(RegExp('(?:^|;\\s*)' + name + '=([^;]*)'));
-    }
-
-    function createCookieAndReload() {
-        document.cookie = "PREF=f6=8;path=/;domain=.youtube.com";
-        reload();
-    }
-
-    function replaceCookieAndReload(cookie) {
-        if (cookie.search(/f6=.+(&|;)?/) === -1) {
-            document.cookie = "PREF=" + cookie + "&f6=8" + ";path=/;domain=.youtube.com";
-        } else if (cookie.search(/f6=.+(&|;)?/) !== -1) {
-            document.cookie = "PREF=" + cookie.replace(/f6=.+(&|;)?/, 'f6=8&') + ";path=/;domain=.youtube.com";
-        }
-        reload();
-    }
-
-    function reload() {
-        var reloadCount = getCache("reloadCount");
-        if (reloadCount && parseInt(reloadCount) <= 3) {
-            setCache("reloadCount", parseInt(reloadCount) + 1);
-            location.reload();
-        } else if (reloadCount && parseInt(reloadCount) > 3) {
-            console.log("test");
-            alert("Youtube - Restore Classic\nSomething went wrong... Please post the following information on greasyfork and disable this script\n\nDebug information:\nCookies enabled: " + navigator.cookieEnabled + "\nCurrent cookies: " + document.cookie);
-            deleteCache("reloadCount");
-        } else {
-            setCache("reloadCount", 1);
-            location.reload();
-        }
-    }
-
-    function getCache(key) {
-		return JSON.parse(localStorage.getItem("YTRestore#" + key));
-	}
-
-	function deleteCache(key) {
-		localStorage.removeItem("YTRestore#" + key);
-	}
-
-	function setCache(key, value) {
-		localStorage.setItem("YTRestore#" + key, JSON.stringify(value));
-	}
-
-    function hideNewYoutubeBanner() {
-        document.getElementById("body").classList.remove("sitewide-ticker-visible");
-
-		var css = `
-#ticker {
-    display: none!important;
-}
-`;
-
-		var style = document.createElement("style");
-		style.type = "text/css";
-		if (style.styleSheet){
-			style.styleSheet.cssText = css;
-		} else {
-			style.appendChild(document.createTextNode(css));
-		}
-
-		document.documentElement.appendChild(style);
-	}
-	dedo();
-}
-
-
-
 
 function dedo() {
 
@@ -462,7 +374,12 @@ Display.prototype = {
 				class:"unselectable"
 			});
 
-			$("#watch7-subscription-container").append($container);
+
+				$("#watch7-subscription-container").append($container);
+
+
+
+
 		}
 
 		return $container;
@@ -1286,7 +1203,8 @@ AjaxClass.prototype = {
 // injecting CSS into the document
 
 (function() {
-	var css = {
+
+		var css = {
 		".disabled": {
 			"cursor":"default!important",
 		},
@@ -1409,6 +1327,8 @@ AjaxClass.prototype = {
 		}
 	};
 
+
+
 	// Append the CSS to the document
 	var node = document.createElement("style");
 	var html = "";
@@ -1510,11 +1430,21 @@ Download.prototype = {
 		save.target = "_blank";
 		save.download = name;
 		save.href = url;
+        var entra = document.createElement("input");
+        entra.setAttribute("type", "text");
+        entra.setAttribute("value", name);
+        entra.setAttribute("id","zeta");
+        document.body.appendChild(entra);
+        var t = document.getElementById("zeta");
+        t.select();
+        document.execCommand("Copy");
 		(document.body || document.documentElement).appendChild(save);
 		save.onclick = function() {
 			(document.body || document.documentElement).removeChild(save);
+			document.body.removeChild(entra);
 		};
 		save.click();
+
 	}
 };
 
