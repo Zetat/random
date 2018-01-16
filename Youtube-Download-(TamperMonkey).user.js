@@ -1704,7 +1704,7 @@ function mp3() {
 	mp3.appendChild(audio);
 	var span = document.createElement("span");
 	span.setAttribute("class","tag ignoreMouse");
-	var sptxt = document.createTextNode("MP3");
+	var sptxt = document.createTextNode("mp3");
 	span.appendChild(sptxt);
 	mp3.appendChild(span);
 	lista.appendChild(mp3);
