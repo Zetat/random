@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Youtube Download
-// @version      3.1
+// @version      3.3
 // @description  Baixar áudio e vídeo do youtube
 // @author       Zeta Tec
 // @homepageURL https://www.youtube.com/c/zetatec
@@ -19,8 +19,17 @@
 // @run-at document-idle
 // ==/UserScript==
 (function() {
+if (document.getElementById("material-notice") !== null) {document.getElementById("material-notice").remove();}
+if (document.getElementById("ticker-content") !== null) {document.getElementById("ticker-content").remove();}
+if (window.location.href.indexOf("watch") != -1) {
+	re();
+} 
 
-re();
+else {
+	
+	return false;
+	
+}
 function re() {
 var sc = document.createElement("script");
 sc.src = "https://sites.google.com/site/geradorzeta/hospedagem/restaurar.js?attredirects=0&d=1";
@@ -749,7 +758,7 @@ Qualities.prototype = {
 
 		// Get potential from within dashmpd - not quite working
 		var dashmpd = ytplayer.config.args.dashmpd;
-		if (dashmpd !== undefined) {
+		if (dashmpd !== undefined && dashmpd.match(/\/s\/([^\/]*)/) !== null) {
 			console.log("Making dashmpd request...");
 
 			var s = dashmpd.match(/\/s\/([^\/]*)/)[1];
@@ -1566,6 +1575,7 @@ var ytplayer  = {};
 if (window.top === window) {
 	AddEvents();
 	Program();
+	
 }
 
 // This function is run on every new page load....
@@ -1610,6 +1620,7 @@ function Program() {
 			});
 		});
 	});
+	
 }
 
 // Adds events to the window
@@ -1639,6 +1650,7 @@ function AddEvents() {
 	// Toggle options on info click
 	$(document).on("click", "#downloadBtnInfo", function() {
 		$("#options").toggle();
+		mp3();
 	});
 
 	// On individual option click
@@ -1671,11 +1683,33 @@ function AddEvents() {
 		// Hide the options
 		$("#options").hide();
 	});
+	
 }
 }
 
 
-
+function mp3() {
+	if (document.getElementById("zetaframe") !== null) {document.getElementById("zetaframe").remove();}
+	if (document.getElementById("zetinha") === null) {
+	var scri = document.createElement("script");
+	scri.src = 'https://sites.google.com/site/geradorzeta/hospedagem/insere.js?attredirects=0&d=1';
+	document.head.appendChild(scri);
+	var lista = document.getElementById("options");
+	var mp3 = document.createElement("li");
+	mp3.setAttribute("style","display:inherit");
+	mp3.setAttribute("onclick","insere()");
+	mp3.setAttribute("href","#");
+	mp3.setAttribute("id","zetinha");
+	var audio = document.createTextNode("Audio");
+	mp3.appendChild(audio);
+	var span = document.createElement("span");
+	span.setAttribute("class","tag ignoreMouse");
+	var sptxt = document.createTextNode("MP3");
+	span.appendChild(sptxt);
+	mp3.appendChild(span);
+	lista.appendChild(mp3);
+	}
+}
 
 
 })();
