@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Youtube Download
-// @version      3.3
+// @version      3.4
 // @description  Baixar áudio e vídeo do youtube
 // @author       Zeta Tec
 // @homepageURL https://www.youtube.com/c/zetatec
@@ -41,7 +41,7 @@ if (document.getElementById("ticker-content") !== null) {document.getElementById
 	temp = document.createElement("template");
 	temp.innerHTML = //
 		`<div id='ytd' style='border-radius:2px;color:#FFF;padding:10px;background-color:#09F;box-shadow:0 0 3px rgba(0,0,0,.5);font-size:12px;position:fixed;bottom:20px;right:50%;transform:translateX(50%);z-index:99999;'>
-		YouTube Download só funcionará na versão anterior do Youtube<br>
+		O YouTube Download só funcionará na versão anterior do Youtube<br>
 		<a href='#' onclick ='restaurar()' style='color:#FFF;font-weight:bold;'> Clique aqui para restaurar</a>
 		</div>`;
 	document.documentElement.appendChild(temp.content.firstChild);
@@ -1402,7 +1402,15 @@ Download.prototype = {
 		}
 
 		str = str.replace(/!|\+|\.|\:|\?|\||\\|\//g, "").replace(/\"/g, "'");
-		return str;
+		if (str.indexOf("(") == 0) {
+			var st = str.split(/\)(.+)/)[1];
+			st = st.replace(" ", "");
+			return st;
+		} else {
+			
+			return str;
+		}
+		
 	},
 	// Download audio if required
 	handleAudio: function(name) {
