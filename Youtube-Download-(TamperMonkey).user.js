@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Youtube Download
-// @version      3.4
+// @version      3.3
 // @description  Baixar áudio e vídeo do youtube
 // @author       Zeta Tec
 // @homepageURL https://www.youtube.com/c/zetatec
@@ -23,12 +23,19 @@ if (document.getElementById("material-notice") !== null) {document.getElementByI
 if (document.getElementById("ticker-content") !== null) {document.getElementById("ticker-content").remove();}
 if (window.location.href.indexOf("watch") != -1) {
 	re();
-} 
+}
 
 else {
-	
-	return false;
-	
+
+	if (document.getElementById("yt-masthead-logo-fragment") === null) {
+
+		return false;
+	}
+	else {
+		if (document.getElementById("ytd") !== null) {document.getElementById("ytd").remove();}
+		dedo();
+	}
+
 }
 function re() {
 var sc = document.createElement("script");
@@ -1407,10 +1414,10 @@ Download.prototype = {
 			st = st.replace(" ", "");
 			return st;
 		} else {
-			
+
 			return str;
 		}
-		
+
 	},
 	// Download audio if required
 	handleAudio: function(name) {
@@ -1583,7 +1590,7 @@ var ytplayer  = {};
 if (window.top === window) {
 	AddEvents();
 	Program();
-	
+
 }
 
 // This function is run on every new page load....
@@ -1628,7 +1635,7 @@ function Program() {
 			});
 		});
 	});
-	
+
 }
 
 // Adds events to the window
@@ -1691,7 +1698,7 @@ function AddEvents() {
 		// Hide the options
 		$("#options").hide();
 	});
-	
+
 }
 }
 
