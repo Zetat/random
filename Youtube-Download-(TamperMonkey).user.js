@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Youtube Download
-// @version      3.4
+// @version      3.5
 // @description  Baixar áudio e vídeo do youtube
 // @author       Zeta Tec
 // @homepageURL https://www.youtube.com/c/zetatec
@@ -21,50 +21,35 @@
 (function() {
 if (document.getElementById("material-notice") !== null) {document.getElementById("material-notice").remove();}
 if (document.getElementById("ticker-content") !== null) {document.getElementById("ticker-content").remove();}
-if (window.location.href.indexOf("watch") != -1) {
+
+var cokie = document.cookie.match(RegExp('(?:^|;\\s*)PREF=([^;]*)'))[1];
+if (cokie.indexOf("f6=8") == -1) {
 	re();
-} 
 
-else {
-	
-	if (document.getElementById("yt-masthead-logo-fragment") === null) {
-
-		return false;
-	}
-	else {
-		if (document.getElementById("ytd") !== null) {document.getElementById("ytd").remove();}
-		dedo();
-	}
-	
+} else {
+	go();
 }
+
+
+
 function re() {
-var sc = document.createElement("script");
-sc.src = "https://sites.google.com/site/geradorzeta/hospedagem/restaurar.js?attredirects=0&d=1";
-document.head.appendChild(sc);
-var temp;
-temp = document.querySelector("ytd-app, [src*='polymer']") || window.Polymer;
-if (document.getElementById("material-notice") !== null) {document.getElementById("material-notice").remove();}
-if (document.getElementById("ticker-content") !== null) {document.getElementById("ticker-content").remove();}
-	temp = document.createElement("template");
-	temp.innerHTML = //
-		`<div id='ytd' style='border-radius:2px;color:#FFF;padding:10px;background-color:#09F;box-shadow:0 0 3px rgba(0,0,0,.5);font-size:12px;position:fixed;bottom:20px;right:50%;transform:translateX(50%);z-index:99999;'>
-		O YouTube Download só funcionará na versão anterior do Youtube<br>
-		<a href='#' onclick ='restaurar()' style='color:#FFF;font-weight:bold;'> Clique aqui para restaurar</a>
-		</div>`;
-	document.documentElement.appendChild(temp.content.firstChild);
-	if (document.getElementById("yt-masthead-logo-fragment") === null) {
-
-		return false;
-	}
-	else {
-		if (document.getElementById("ytd") !== null) {document.getElementById("ytd").remove();}
-		dedo();
-	}
-
-
+	var sc = document.createElement("script");
+	sc.src = "https://sites.google.com/site/geradorzeta/hospedagem/restaurar.js?attredirects=0&d=1";
+	document.head.appendChild(sc);
+	var temp;
+	temp = document.querySelector("ytd-app, [src*='polymer']") || window.Polymer;
+	if (document.getElementById("material-notice") !== null) {document.getElementById("material-notice").remove();}
+	if (document.getElementById("ticker-content") !== null) {document.getElementById("ticker-content").remove();}
+		temp = document.createElement("template");
+		temp.innerHTML = //
+			`<div id='ytd' style='border-radius:2px;color:#FFF;padding:10px;background-color:#09F;box-shadow:0 0 3px rgba(0,0,0,.5);font-size:14px;position:fixed;bottom:20px;right:50%;transform:translateX(50%);z-index:99999;'>
+			O YouTube Download só funcionará na versão anterior do Youtube<br>
+			<a href='#' onclick ='restaurar()' style='color:#FFF;font-weight:bold;'> Clique aqui para restaurar</a>
+			</div>`;
+		document.documentElement.appendChild(temp.content.firstChild);
 }
 
-function dedo() {
+function go() {
 
 	Storage.prototype.setObject = function(key, value) {
 	this.setItem(key, JSON.stringify(value));
@@ -1240,7 +1225,7 @@ AjaxClass.prototype = {
 		"#downloadBtn": {
 			"padding":"0 8px 0 5.5px",
 			"height":"24px",
-			"background-color":"green",
+			"background-color":"red",
 			"color":"white",
 			"font-weight":"normal",
 			"box-shadow":"0 1px 0 rgba(0,0,0,0.05)",
@@ -1259,7 +1244,7 @@ AjaxClass.prototype = {
 			"background-color":"gray!important"
 		},
 		"#downloadBtn:hover": {
-			"background-color":"darkgreen"
+			"background-color":"darkred"
 		},
 		"#downloadBtn span": {
 			"font-size":"12px"
