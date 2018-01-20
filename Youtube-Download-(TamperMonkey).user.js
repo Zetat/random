@@ -10,8 +10,8 @@
 // @exclude         *://www.youtube.com/live_chat*
 // @icon            http://zetatec27.blogspot.com.br/favicon.ico
 // @encoding utf-8
-// @updateURL https://raw.githubusercontent.com/Zetat/random/master/Youtube-Download-(TamperMonkey).user.js
-// @downloadURL https://raw.githubusercontent.com/Zetat/random/master/Youtube-Download-(TamperMonkey).user.js
+// @updateURL https://raw.githubusercontent.com/Zetat/YoutubeDownload/master/Youtube-Download-(TamperMonkey).user.js
+// @downloadURL https://raw.githubusercontent.com/Zetat/YoutubeDownload/master/Youtube-Download-(TamperMonkey).user.js
 // @require      http://code.jquery.com/jquery-1.11.0.min.js
 // @grant        GM_xmlhttpRequest
 // @connect			googlevideo.com
